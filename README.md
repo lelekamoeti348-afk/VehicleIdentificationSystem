@@ -10,7 +10,7 @@ A comprehensive JavaFX desktop application for managing vehicle identification, 
 - Pofane Matlali (Police Module)
 - Retshedisitsoe Moeketsi (Customer Module)
 - Lethako Khabele (Insurance Module)
-- Reneilwe Moeketsi (Workshop Module)
+- Kamohelo Masiloane (Workshop Module)
 
 ## Technologies Used
 - **Frontend:** JavaFX 22
