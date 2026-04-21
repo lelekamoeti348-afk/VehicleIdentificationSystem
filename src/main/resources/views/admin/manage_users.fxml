@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.AdminController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #667eea, #764ba2); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="Manage System Users" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="Add, edit, or deactivate user accounts" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <HBox spacing="10">
+        <TextField fx:id="userSearchField" promptText="Search users..." HBox.hgrow="ALWAYS" style="-fx-background-radius: 20; -fx-padding: 8 15;"/>
+        <Button onAction="#addNewUser" text="➕ Add User" styleClass="btn-success"/>
+        <Button onAction="#refreshUserTable" text="🔄 Refresh" styleClass="btn-primary"/>
+    </HBox>
+
+    <TableView fx:id="userTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colUserId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colUsername" text="Username" prefWidth="120"/>
+            <TableColumn fx:id="colFullName" text="Full Name" prefWidth="150"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+            <TableColumn fx:id="colRole" text="Role" prefWidth="100"/>
+            <TableColumn fx:id="colUserStatus" text="Status" prefWidth="80"/>
+        </columns>
+    </TableView>
+    <Pagination fx:id="userPagination"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button onAction="#editUser" text="✏️ Edit Selected" styleClass="btn-warning"/>
+        <Button onAction="#deleteUser" text="🗑️ Delete Selected" styleClass="btn-danger"/>
+    </HBox>
+
+</VBox>

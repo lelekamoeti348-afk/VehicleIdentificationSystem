@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.PoliceController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #1a1a2e, #16213e); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="Vehicle Search" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="Law enforcement lookup" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <GridPane hgap="15" vgap="15">
+        <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+
+        <Label text="Registration Number:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="searchRegField" promptText="Enter full or partial registration" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Make:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="searchMakeField" promptText="e.g., Toyota" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Model:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="searchModelField" promptText="e.g., Hilux" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button onAction="#advancedSearch" text="🔍 Search" styleClass="btn-primary"/>
+        <Button onAction="#clearSearch" text="Clear" styleClass="btn-secondary"/>
+    </HBox>
+
+    <VBox fx:id="vehicleDetailsCard" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15;" visible="false" managed="false">
+        <Label text="Vehicle Information" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+        <Separator/>
+        <Label fx:id="detailReg"/>
+        <Label fx:id="detailOwner"/>
+        <Label fx:id="detailMakeModel"/>
+        <Label fx:id="detailYearColor"/>
+        <Label fx:id="detailStatus"/>
+        <Label fx:id="detailViolations"/>
+    </VBox>
+
+</VBox>

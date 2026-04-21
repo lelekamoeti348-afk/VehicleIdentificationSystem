@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.InsuranceController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #ed8936, #dd6b20); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="Insurance Claims" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="Process and track claims" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <HBox spacing="10">
+        <Button onAction="#processClaim" text="📋 Process New Claim" styleClass="btn-primary"/>
+        <Button onAction="#refreshClaims" text="🔄 Refresh" styleClass="btn-info"/>
+    </HBox>
+
+    <TableView fx:id="claimsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colClaimNumber" text="Claim Number" prefWidth="150"/>
+            <TableColumn fx:id="colClaimPolicy" text="Policy Number" prefWidth="150"/>
+            <TableColumn fx:id="colClaimDate" text="Claim Date" prefWidth="100"/>
+            <TableColumn fx:id="colClaimAmount" text="Amount (M)" prefWidth="80"/>
+            <TableColumn fx:id="colClaimStatus" text="Status" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button onAction="#approveClaim" text="✅ Approve Selected" styleClass="btn-success"/>
+        <Button onAction="#rejectClaim" text="❌ Reject Selected" styleClass="btn-danger"/>
+    </HBox>
+
+</VBox>

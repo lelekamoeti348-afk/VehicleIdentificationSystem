@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.CustomerController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #48bb78, #38a169); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="My Vehicles" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="View your registered vehicles" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <TableView fx:id="vehiclesTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colRegNumber" text="Registration" prefWidth="120"/>
+            <TableColumn fx:id="colMake" text="Make" prefWidth="100"/>
+            <TableColumn fx:id="colModel" text="Model" prefWidth="100"/>
+            <TableColumn fx:id="colYear" text="Year" prefWidth="60"/>
+            <TableColumn fx:id="colColor" text="Color" prefWidth="80"/>
+            <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button onAction="#refreshData" text="🔄 Refresh" styleClass="btn-primary"/>
+    </HBox>
+
+</VBox>

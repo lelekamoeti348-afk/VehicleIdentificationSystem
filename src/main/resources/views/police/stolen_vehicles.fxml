@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.PoliceController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #1a1a2e, #16213e); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="Stolen Vehicles Database" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="Active theft alerts" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <HBox spacing="10">
+        <TextField fx:id="stolenSearchField" promptText="Search by registration..." HBox.hgrow="ALWAYS" style="-fx-background-radius: 20;"/>
+        <Button onAction="#searchStolen" text="🔍 Search" styleClass="btn-primary"/>
+        <Button onAction="#refreshStolen" text="🔄 Refresh" styleClass="btn-info"/>
+    </HBox>
+
+    <TableView fx:id="stolenTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colStolenReg" text="Registration" prefWidth="120"/>
+            <TableColumn fx:id="colStolenMake" text="Make" prefWidth="100"/>
+            <TableColumn fx:id="colStolenModel" text="Model" prefWidth="100"/>
+            <TableColumn fx:id="colStolenOwner" text="Owner" prefWidth="150"/>
+            <TableColumn fx:id="colReportDate" text="Report Date" prefWidth="150"/>
+            <TableColumn fx:id="colCaseStatus" text="Status" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+</VBox>

@@ -1,0 +1,92 @@
+/* ============================================
+   ANIMATIONS for Vehicle Identification System
+   ============================================ */
+
+/* Fade In */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    -fx-opacity: 0;
+    -fx-animation: fadeIn 0.5s ease forwards;
+}
+
+/* Slide In from Left */
+@keyframes slideInLeft {
+    from { -fx-translate-x: -100; opacity: 0; }
+    to { -fx-translate-x: 0; opacity: 1; }
+}
+
+.slide-in-left {
+    -fx-translate-x: -100;
+    -fx-opacity: 0;
+    -fx-animation: slideInLeft 0.6s ease-out forwards;
+}
+
+/* Slide In from Right */
+@keyframes slideInRight {
+    from { -fx-translate-x: 100; opacity: 0; }
+    to { -fx-translate-x: 0; opacity: 1; }
+}
+
+.slide-in-right {
+    -fx-translate-x: 100;
+    -fx-opacity: 0;
+    -fx-animation: slideInRight 0.6s ease-out forwards;
+}
+
+/* Pulse (for buttons) */
+@keyframes pulse {
+    0% { -fx-scale-x: 1; -fx-scale-y: 1; }
+    50% { -fx-scale-x: 1.05; -fx-scale-y: 1.05; }
+    100% { -fx-scale-x: 1; -fx-scale-y: 1; }
+}
+
+.pulse {
+    -fx-animation: pulse 0.5s ease-in-out;
+}
+
+/* Continuous pulse (for attention) */
+@keyframes pulseInfinite {
+    0% { -fx-scale-x: 1; -fx-scale-y: 1; -fx-opacity: 1; }
+    50% { -fx-scale-x: 1.08; -fx-scale-y: 1.08; -fx-opacity: 0.9; }
+    100% { -fx-scale-x: 1; -fx-scale-y: 1; -fx-opacity: 1; }
+}
+
+.pulse-infinite {
+    -fx-animation: pulseInfinite 1.5s infinite;
+}
+
+/* Rotate (for refresh buttons) */
+@keyframes rotate {
+    from { -fx-rotate: 0; }
+    to { -fx-rotate: 360; }
+}
+
+.rotate {
+    -fx-animation: rotate 0.6s linear;
+}
+
+/* Shake (for error feedback) */
+@keyframes shake {
+    0% { -fx-translate-x: 0; }
+    25% { -fx-translate-x: -5; }
+    75% { -fx-translate-x: 5; }
+    100% { -fx-translate-x: 0; }
+}
+
+.shake {
+    -fx-animation: shake 0.4s ease-in-out;
+}
+
+/* Bounce (for success) */
+@keyframes bounce {
+    0%, 100% { -fx-translate-y: 0; }
+    50% { -fx-translate-y: -10; }
+}
+
+.bounce {
+    -fx-animation: bounce 0.5s ease;
+}

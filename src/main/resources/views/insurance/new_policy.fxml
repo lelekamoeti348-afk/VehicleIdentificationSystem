@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.InsuranceController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #48bb78, #38a169); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="Create New Policy" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="Register a new insurance policy" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <GridPane hgap="15" vgap="15">
+        <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+
+        <Label text="Vehicle Registration:*" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="vehicleRegCombo" promptText="Select a vehicle" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Policy Number:*" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="policyNumberField" promptText="Unique policy number" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Insurance Company:*" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="companyField" promptText="e.g., Lesotho Insurance" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Policy Type:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="policyTypeCombo" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Start Date:*" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <DatePicker fx:id="startDatePicker" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <Label text="End Date:*" GridPane.rowIndex="5" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <DatePicker fx:id="endDatePicker" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+        <Label text="Premium Amount (M):*" GridPane.rowIndex="6" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="premiumField" promptText="e.g., 4500.00" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+        <Label text="Coverage Amount (M):" GridPane.rowIndex="7" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="coverageField" promptText="e.g., 250000.00" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button onAction="#saveNewPolicy" text="💾 Save Policy" styleClass="btn-success"/>
+        <Button onAction="#cancelNewPolicy" text="Cancel" styleClass="btn-secondary"/>
+    </HBox>
+
+</VBox>

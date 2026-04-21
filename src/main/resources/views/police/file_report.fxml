@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.PoliceController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #f56565, #e53e3e); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="File Police Report" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="Record incidents and violations" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <GridPane hgap="15" vgap="15">
+        <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+
+        <Label text="Registration Number:*" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="reportRegField" promptText="e.g., B 1234 LS" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Report Type:*" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="reportTypeCombo" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Location:*" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="reportLocationField" promptText="Where did it happen?" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Description:*" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextArea fx:id="reportDescArea" promptText="Detailed description of the incident..." prefRowCount="5" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button onAction="#submitReport" text="📝 Submit Report" styleClass="btn-danger"/>
+        <Button onAction="#cancelReport" text="Cancel" styleClass="btn-secondary"/>
+    </HBox>
+
+</VBox>

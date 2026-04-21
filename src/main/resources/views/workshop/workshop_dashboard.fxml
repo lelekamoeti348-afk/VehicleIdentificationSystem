@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.WorkshopController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <!-- Header -->
+    <VBox style="-fx-background-color: linear-gradient(to right, #ed8936, #dd6b20); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label fx:id="welcomeLabel" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Workshop Dashboard" />
+        <Label text="Service Records &amp; Maintenance" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <!-- Logout Button -->
+    <HBox alignment="CENTER_RIGHT">
+        <Button onAction="#handleLogout" text="🚪 Logout" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 5 15;" />
+    </HBox>
+
+    <!-- Statistics Cards -->
+    <HBox spacing="15">
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+            <Label text="🔧 Total Services" style="-fx-text-fill: #718096; -fx-font-size: 12px;"/>
+            <Label fx:id="totalServicesLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2d3748;" text="0"/>
+        </VBox>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+            <Label text="💰 Total Revenue" style="-fx-text-fill: #718096; -fx-font-size: 12px;"/>
+            <Label fx:id="totalRevenueLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2d3748;" text="M0"/>
+        </VBox>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+            <Label text="🚗 Vehicles Serviced" style="-fx-text-fill: #718096; -fx-font-size: 12px;"/>
+            <Label fx:id="vehiclesServicedLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2d3748;" text="0"/>
+        </VBox>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+            <Label text="📊 Avg Service Cost" style="-fx-text-fill: #718096; -fx-font-size: 12px;"/>
+            <Label fx:id="avgServiceCostLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2d3748;" text="M0"/>
+        </VBox>
+    </HBox>
+
+    <!-- Search and Action Buttons -->
+    <HBox spacing="10">
+        <TextField fx:id="searchField" promptText="🔍 Search by registration number..." HBox.hgrow="ALWAYS" style="-fx-background-radius: 20; -fx-padding: 8 15;"/>
+        <Button fx:id="searchButton" onAction="#searchVehicle" text="Search" style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+        <Button fx:id="refreshButton" onAction="#refreshData" text="Refresh" style="-fx-background-color: #48bb78; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+        <Button onAction="#newService" text="➕ New Service" style="-fx-background-color: #ed8936; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+        <Button onAction="#printInvoice" text="🖨️ Print Invoice" style="-fx-background-color: #805ad5; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+    </HBox>
+
+    <!-- Vehicle Info Card (hidden by default) -->
+    <VBox fx:id="vehicleInfoCard" visible="false" managed="false" spacing="5" style="-fx-background-color: #fff3e0; -fx-background-radius: 10; -fx-padding: 15;">
+        <Label text="Vehicle Information" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+        <Label fx:id="regNumberLabel"/>
+        <Label fx:id="ownerLabel"/>
+        <Label fx:id="makeModelLabel"/>
+        <Label fx:id="yearColorLabel"/>
+        <Label fx:id="mileageLabel"/>
+        <Label fx:id="statusLabel"/>
+    </VBox>
+
+    <!-- Service History Table with Edit/Delete buttons -->
+    <Label text="📋 Service History" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+    <TableView fx:id="serviceHistoryTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colServiceId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colServiceDate" text="Date" prefWidth="100"/>
+            <TableColumn fx:id="colServiceType" text="Service Type" prefWidth="120"/>
+            <TableColumn fx:id="colServiceDesc" text="Description" prefWidth="250"/>
+            <TableColumn fx:id="colServiceCost" text="Cost (M)" prefWidth="80"/>
+            <TableColumn fx:id="colOdometer" text="Odometer" prefWidth="80"/>
+            <TableColumn fx:id="colVehicleReg" text="Registration" prefWidth="100"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button onAction="#editServiceRecord" text="✏️ Edit Selected" styleClass="btn-warning"/>
+        <Button onAction="#deleteServiceRecord" text="🗑️ Delete Selected" styleClass="btn-danger"/>
+    </HBox>
+
+</VBox>

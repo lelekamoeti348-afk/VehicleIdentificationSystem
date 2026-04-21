@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.WorkshopController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #ed8936, #dd6b20); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="Service Records" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="Complete maintenance log" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <HBox spacing="10">
+        <TextField fx:id="serviceSearchField" promptText="Search by vehicle registration..." HBox.hgrow="ALWAYS"/>
+        <Button onAction="#refreshServiceRecords" text="🔄 Refresh" styleClass="btn-primary"/>
+        <Button onAction="#exportServiceRecords" text="📥 Export CSV" styleClass="btn-info"/>
+    </HBox>
+
+    <TableView fx:id="serviceRecordsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colServDate" text="Date" prefWidth="100"/>
+            <TableColumn fx:id="colServType" text="Service Type" prefWidth="120"/>
+            <TableColumn fx:id="colServDesc" text="Description" prefWidth="250"/>
+            <TableColumn fx:id="colServCost" text="Cost (M)" prefWidth="80"/>
+            <TableColumn fx:id="colServOdometer" text="Odometer" prefWidth="80"/>
+            <TableColumn fx:id="colServVehicle" text="Registration" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+</VBox>

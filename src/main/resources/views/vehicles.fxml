@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.VehicleController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="All Vehicles" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2d3748;" />
+
+    <HBox spacing="10">
+        <TextField fx:id="searchField" promptText="Search by registration, make or model..." HBox.hgrow="ALWAYS" styleClass="search-field"/>
+        <Button onAction="#refreshData" text="🔄 Refresh" styleClass="btn-primary"/>
+    </HBox>
+
+    <TableView fx:id="vehicleTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colRegNumber" text="Registration" prefWidth="120"/>
+            <TableColumn fx:id="colMake" text="Make" prefWidth="100"/>
+            <TableColumn fx:id="colModel" text="Model" prefWidth="100"/>
+            <TableColumn fx:id="colYear" text="Year" prefWidth="60"/>
+            <TableColumn fx:id="colColor" text="Color" prefWidth="80"/>
+            <TableColumn fx:id="colOwner" text="Owner" prefWidth="150"/>
+            <TableColumn fx:id="colStatus" text="Status" prefWidth="80"/>
+        </columns>
+    </TableView>
+
+</VBox>

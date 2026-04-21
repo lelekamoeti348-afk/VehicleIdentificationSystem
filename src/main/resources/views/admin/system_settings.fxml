@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.AdminController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #1a1a2e, #16213e); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="System Settings" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="Configure application parameters" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <GridPane hgap="20" vgap="15">
+        <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+
+        <Label text="Database Connection:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="dbUrlField" promptText="jdbc:postgresql://localhost:5432/..." GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Backup Directory:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="backupPathField" promptText="C:/Backups" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Log Level:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="logLevelCombo" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Session Timeout (minutes):" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="sessionTimeoutField" text="30" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Enable Email Notifications:" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <CheckBox fx:id="emailNotificationCheck" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button onAction="#saveSettings" text="💾 Save Settings" styleClass="btn-success"/>
+        <Button onAction="#testConnection" text="🔌 Test Database" styleClass="btn-info"/>
+        <Button onAction="#backupDatabase" text="📀 Backup Now" styleClass="btn-primary"/>
+    </HBox>
+
+</VBox>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.PoliceController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <!-- Header -->
+    <VBox style="-fx-background-color: linear-gradient(to right, #1a1a2e, #16213e); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label fx:id="welcomeLabel" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Police Dashboard" />
+        <Label text="Law Enforcement &amp; Traffic Management" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <!-- Logout Button -->
+    <HBox alignment="CENTER_RIGHT">
+        <Button onAction="#handleLogout" text="🚪 Logout" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 5 15;" />
+    </HBox>
+
+    <!-- Statistics Cards -->
+    <HBox spacing="15">
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+            <Label text="🚨 Stolen Vehicles" style="-fx-text-fill: #718096; -fx-font-size: 12px;"/>
+            <Label fx:id="stolenCountLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2d3748;" text="0"/>
+        </VBox>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+            <Label text="💥 Accidents" style="-fx-text-fill: #718096; -fx-font-size: 12px;"/>
+            <Label fx:id="accidentCountLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2d3748;" text="0"/>
+        </VBox>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+            <Label text="📋 Unpaid Violations" style="-fx-text-fill: #718096; -fx-font-size: 12px;"/>
+            <Label fx:id="violationCountLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2d3748;" text="0"/>
+        </VBox>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+            <Label text="⚖️ Open Cases" style="-fx-text-fill: #718096; -fx-font-size: 12px;"/>
+            <Label fx:id="openCasesLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2d3748;" text="0"/>
+        </VBox>
+    </HBox>
+
+    <!-- Action Buttons -->
+    <HBox spacing="10">
+        <Button onAction="#fileReport" text="📝 File Report" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+        <Button onAction="#issueViolation" text="⚠️ Issue Violation" style="-fx-background-color: #ed8936; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+        <Button onAction="#refreshData" text="🔄 Refresh" style="-fx-background-color: #48bb78; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+    </HBox>
+
+    <!-- Search Bar -->
+    <HBox spacing="10">
+        <TextField fx:id="searchField" promptText="🔍 Search vehicle by registration..." HBox.hgrow="ALWAYS" style="-fx-background-radius: 20; -fx-padding: 8 15;"/>
+        <Button onAction="#searchVehicle" text="Search" style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+    </HBox>
+
+    <!-- Vehicle Info Card (hidden by default) -->
+    <VBox fx:id="vehicleInfoCard" visible="false" managed="false" spacing="5" style="-fx-background-color: #e0f2fe; -fx-background-radius: 10; -fx-padding: 15;">
+        <Label text="Vehicle Information" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+        <Label fx:id="regNumberLabel"/>
+        <Label fx:id="ownerLabel"/>
+        <Label fx:id="makeModelLabel"/>
+        <Label fx:id="yearColorLabel"/>
+        <Label fx:id="statusLabel"/>
+    </VBox>
+
+    <!-- TabPane for Stolen Vehicles, Violations, Accidents, Customer Queries -->
+    <TabPane VBox.vgrow="ALWAYS">
+
+        <!-- Stolen Vehicles Tab -->
+        <Tab text="Stolen Vehicles" closable="false">
+            <VBox spacing="10">
+                <TableView fx:id="stolenTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colStolenId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colStolenReg" text="Registration" prefWidth="100"/>
+                        <TableColumn fx:id="colStolenMake" text="Make" prefWidth="80"/>
+                        <TableColumn fx:id="colStolenModel" text="Model" prefWidth="80"/>
+                        <TableColumn fx:id="colStolenOwner" text="Owner" prefWidth="120"/>
+                        <TableColumn fx:id="colReportDate" text="Report Date" prefWidth="150"/>
+                        <TableColumn fx:id="colCaseStatus" text="Status" prefWidth="80"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button onAction="#deleteReport" text="🗑️ Delete Report" styleClass="btn-danger"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- Violations Tab -->
+        <Tab text="Violations" closable="false">
+            <VBox spacing="10">
+                <TableView fx:id="violationsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colViolationId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colViolationReg" text="Registration" prefWidth="100"/>
+                        <TableColumn fx:id="colViolationType" text="Violation Type" prefWidth="150"/>
+                        <TableColumn fx:id="colViolationDate" text="Date" prefWidth="150"/>
+                        <TableColumn fx:id="colFineAmount" text="Fine (M)" prefWidth="80"/>
+                        <TableColumn fx:id="colViolationStatus" text="Status" prefWidth="80"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button onAction="#editViolation" text="✏️ Edit Selected" styleClass="btn-warning"/>
+                    <Button onAction="#deleteViolation" text="🗑️ Delete Selected" styleClass="btn-danger"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- Accidents Tab -->
+        <Tab text="Accidents" closable="false">
+            <VBox spacing="10">
+                <TableView fx:id="accidentsTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colAccidentId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colAccidentReg" text="Registration" prefWidth="100"/>
+                        <TableColumn fx:id="colLocation" text="Location" prefWidth="150"/>
+                        <TableColumn fx:id="colAccidentDate" text="Date" prefWidth="150"/>
+                        <TableColumn fx:id="colSeverity" text="Severity" prefWidth="80"/>
+                        <TableColumn fx:id="colAccidentStatus" text="Status" prefWidth="80"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button onAction="#deleteReport" text="🗑️ Delete Report" styleClass="btn-danger"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- Customer Queries Tab -->
+        <Tab text="Customer Queries" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10">
+                    <Button onAction="#refreshQueries" text="🔄 Refresh Queries" style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;" />
+                    <Region HBox.hgrow="ALWAYS"/>
+                </HBox>
+                <TableView fx:id="queriesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colQueryId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colQueryCustomer" text="Customer" prefWidth="150"/>
+                        <TableColumn fx:id="colQuerySubject" text="Subject" prefWidth="200"/>
+                        <TableColumn fx:id="colQueryText" text="Query" prefWidth="250"/>
+                        <TableColumn fx:id="colQueryDate" text="Date" prefWidth="150"/>
+                        <TableColumn fx:id="colQueryStatus" text="Status" prefWidth="100"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button onAction="#respondToQuery" text="✉️ Respond to Selected" style="-fx-background-color: #48bb78; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 20;" />
+                </HBox>
+            </VBox>
+        </Tab>
+
+    </TabPane>
+</VBox>

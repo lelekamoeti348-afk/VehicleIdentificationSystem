@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.ReportsController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="System Reports" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2d3748;" />
+
+    <!-- Statistics Cards -->
+    <HBox spacing="15">
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15;" HBox.hgrow="ALWAYS">
+            <Label text="Total Vehicles" style="-fx-text-fill: #718096;"/>
+            <Label fx:id="totalVehiclesLabel" style="-fx-font-size: 28px; -fx-font-weight: bold;" text="0"/>
+        </VBox>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15;" HBox.hgrow="ALWAYS">
+            <Label text="Total Services" style="-fx-text-fill: #718096;"/>
+            <Label fx:id="totalServicesLabel" style="-fx-font-size: 28px; -fx-font-weight: bold;" text="0"/>
+        </VBox>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15;" HBox.hgrow="ALWAYS">
+            <Label text="Active Policies" style="-fx-text-fill: #718096;"/>
+            <Label fx:id="activePoliciesLabel" style="-fx-font-size: 28px; -fx-font-weight: bold;" text="0"/>
+        </VBox>
+        <VBox style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 15;" HBox.hgrow="ALWAYS">
+            <Label text="Total Users" style="-fx-text-fill: #718096;"/>
+            <Label fx:id="totalUsersLabel" style="-fx-font-size: 28px; -fx-font-weight: bold;" text="0"/>
+        </VBox>
+    </HBox>
+
+    <!-- Bar Chart -->
+    <Label text="Vehicles by Make (Top 5)" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+    <BarChart fx:id="vehicleBarChart" VBox.vgrow="ALWAYS">
+        <xAxis>
+            <CategoryAxis label="Make"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Count"/>
+        </yAxis>
+    </BarChart>
+
+    <Button onAction="#refreshReports" text="🔄 Refresh" styleClass="btn-primary"/>
+
+</VBox>

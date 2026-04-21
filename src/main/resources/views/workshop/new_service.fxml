@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.WorkshopController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #48bb78, #38a169); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="New Service Record" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="Log a completed service" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <GridPane hgap="15" vgap="15">
+        <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+
+        <Label text="Vehicle Registration:*" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="serviceVehicleCombo" promptText="Select vehicle" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Service Date:*" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <DatePicker fx:id="serviceDatePicker" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Service Type:*" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="serviceTypeCombo" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Description:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextArea fx:id="serviceDescArea" promptText="Work performed, parts replaced, etc." prefRowCount="4" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Cost (M):*" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="serviceCostField" promptText="e.g., 1500.00" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <Label text="Odometer (km):*" GridPane.rowIndex="5" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="serviceOdometerField" promptText="Current mileage" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button onAction="#saveServiceRecord" text="💾 Save Record" styleClass="btn-success"/>
+        <Button onAction="#printServiceInvoice" text="🖨️ Print Invoice" styleClass="btn-primary"/>
+        <Button onAction="#cancelService" text="Cancel" styleClass="btn-secondary"/>
+    </HBox>
+
+</VBox>

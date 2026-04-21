@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.DashboardController">
+
+    <!-- Top: Menu Bar and Header -->
+    <top>
+        <VBox>
+            <!-- Menu Bar -->
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="Exit" onAction="#handleExit" />
+                </Menu>
+                <Menu text="Help">
+                    <MenuItem text="About" onAction="#showAbout" />
+                </Menu>
+            </MenuBar>
+
+            <!-- Header with welcome message, clock, and logout button -->
+            <HBox alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);" spacing="20">
+                <padding><Insets left="20" right="20" top="10" bottom="10"/></padding>
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #667eea;" text="Vehicle Identification System" />
+                <Region HBox.hgrow="ALWAYS" />
+                <VBox alignment="CENTER_RIGHT">
+                    <Label fx:id="welcomeLabel" style="-fx-font-weight: bold; -fx-text-fill: #2d3748;" />
+                    <Label fx:id="roleLabel" style="-fx-font-size: 12px; -fx-text-fill: #718096;" />
+                </VBox>
+                <Label fx:id="dateTimeLabel" style="-fx-text-fill: #718096;" />
+                <Button onAction="#handleLogout" text="Logout" style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 5;" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Left: Sidebar -->
+    <left>
+        <VBox fx:id="sidebar" prefWidth="250" spacing="5" style="-fx-background-color: linear-gradient(to bottom, #1a1a2e, #16213e); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 2, 0);">
+            <padding><Insets top="20" /></padding>
+            <Label text="MENU" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 20 15;" />
+            <Button fx:id="btnDashboard" onAction="#showDashboard" text="Dashboard" styleClass="sidebar-menu-item" />
+            <Button fx:id="btnVehicles" onAction="#showVehicles" text="Vehicles" styleClass="sidebar-menu-item" />
+            <Button fx:id="btnReports" onAction="#showReports" text="Reports" styleClass="sidebar-menu-item" />
+            <Button fx:id="btnSettings" onAction="#showSettings" text="Settings" styleClass="sidebar-menu-item" />
+            <Region VBox.vgrow="ALWAYS" />
+        </VBox>
+    </left>
+
+    <!-- Center: Content Area -->
+    <center>
+        <StackPane fx:id="contentArea" style="-fx-background-color: #f8f9fa;">
+            <padding><Insets bottom="20" left="20" right="20" top="20"/></padding>
+        </StackPane>
+    </center>
+
+</BorderPane>

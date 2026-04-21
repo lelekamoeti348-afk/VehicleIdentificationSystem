@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vehicle.vis.vehicleidentificationsystem.controllers.WorkshopController">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <VBox style="-fx-background-color: linear-gradient(to right, #4299e1, #3182ce); -fx-background-radius: 15;">
+        <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+        <Label text="Appointment Scheduler" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
+        <Label text="Manage customer appointments" style="-fx-text-fill: #e2e8f0; -fx-font-size: 12px;" />
+    </VBox>
+
+    <HBox spacing="10">
+        <DatePicker fx:id="appointmentDatePicker" promptText="Select date"/>
+        <Button onAction="#showAppointmentsForDate" text="📅 Show Appointments" styleClass="btn-primary"/>
+        <Button onAction="#newAppointment" text="➕ New Appointment" styleClass="btn-success"/>
+        <Button onAction="#refreshAppointments" text="🔄 Refresh" styleClass="btn-info"/>
+    </HBox>
+
+    <TableView fx:id="appointmentsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colAppTime" text="Time" prefWidth="100"/>
+            <TableColumn fx:id="colAppVehicle" text="Vehicle" prefWidth="120"/>
+            <TableColumn fx:id="colAppCustomer" text="Customer" prefWidth="150"/>
+            <TableColumn fx:id="colAppService" text="Service Type" prefWidth="120"/>
+            <TableColumn fx:id="colAppStatus" text="Status" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button onAction="#completeAppointment" text="✅ Mark Completed" styleClass="btn-success"/>
+        <Button onAction="#cancelAppointment" text="❌ Cancel" styleClass="btn-danger"/>
+    </HBox>
+
+</VBox>
