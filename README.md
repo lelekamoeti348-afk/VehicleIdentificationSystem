@@ -1,5 +1,7 @@
 # Vehicle Identification System
 
+**GitHub Repository:** [https://github.com/lelekamoeti348-afk/VehicleIdentificationSystem](https://github.com/lelekamoeti348-afk/VehicleIdentificationSystem)
+
 ## Overview
 A comprehensive JavaFX desktop application for managing vehicle identification, police reports, insurance policies, service records, and customer queries in Lesotho.
 
